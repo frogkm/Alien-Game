@@ -8,16 +8,16 @@ public class CollideTrigger : MonoBehaviour
 {
     [SerializeField] private UnityEvent uEvent;
 
-    //[SerializeField] private UnityEvent event = null;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
+
+    private void OnTriggerEnter(Collider other) {
+        uEvent.Invoke();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+
+    
+
+    
 }
+
+
+
