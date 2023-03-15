@@ -1,0 +1,38 @@
+{
+    "dialogue_list": [
+      { 
+        "id": 1,
+        "speaker": "Bob",
+        "message": "Heyo! This is a test message! How's it going buddy?!",
+        "next_id": 2          
+      },
+      {
+        "id": 2,
+        "speaker": "Bob",
+        "message": "Yoo this is the second message!!" ,
+        "next_id": 4   
+      },
+      {
+        "id": 3,
+        "speaker": "Bob",
+        "message": "Let's send you back to the start why dont we",
+        "next_id": 1          
+      },
+      {
+        "id": 4,
+        "speaker": "Bob",
+        "message": "This is the thiiiird",
+        "next_id": 3          
+      },
+      {
+        "id": 5,
+        "speaker": "Bob",
+        "message": "What is your favorite color?",
+        "next_ids": [1, 2, 3, 4],
+        "answers": ["red", "blue", "yellow", "purple"]         
+      }
+
+    ]
+
+}
+  
