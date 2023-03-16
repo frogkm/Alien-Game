@@ -4,19 +4,13 @@ using UnityEngine;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
-
-public class DialogueManager : MonoBehaviour
+public static class DialogueLoader
 {
 
-    [SerializeField] private TextAsset jsonFile;
-
-    private Dictionary<int, Dialogue> dialogueDict;
-
-
-    void Start()
-    {
-        dialogueDict = new Dictionary<int, Dialogue>();
+    public static Dictionary<int, Dialogue> loadDialogue(TextAsset jsonFile) {
+    
         DialogueList dialogueList = JsonConvert.DeserializeObject<DialogueList>(jsonFile.text);
+        Dictionary<int, Dialogue> dialogueDict = new Dictionary<int, Dialogue>();
 
         foreach (object item in dialogueList.dialogue_list)
         {
@@ -42,19 +36,6 @@ public class DialogueManager : MonoBehaviour
                 Debug.LogError("Invalid dialogue object: " + item);
             }
         }
-
-        
-    }
-
-    private void printDict() {
-        foreach (KeyValuePair<int, Dialogue> keyVal in dialogueDict) {
-            Debug.Log(string.Format("{0}: {1}, by {2}", keyVal.Key, keyVal.Value.message, keyVal.Value.speaker));
-        }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        return dialogueDict;
     }
 }
