@@ -20,6 +20,14 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private Transform orientation;
 
+    [SerializeField] private float interactRadius; 
+    [SerializeField] private LayerMask interactLayer; 
+
+    [SerializeField] private CapsuleCollider interactCollider;
+
+    [SerializeField] private InteractManager interactManager;
+
+
     private bool grounded;
     private bool ready_to_jump;
 
@@ -28,6 +36,9 @@ public class PlayerController : MonoBehaviour
 
     private Vector3 move_direction;
     private Rigidbody rb;
+
+    private RaycastHit[] interactHits;
+    
 
     private void Start()
     {
@@ -49,11 +60,35 @@ public class PlayerController : MonoBehaviour
             rb.drag = groundDrag;
         else
             rb.drag = 0;
+        
+
+        for (int i = 0; i < interactHits.Length; i++)
+        {
+            //Debug.Log("HIT");
+            RaycastHit hit = interactHits[i];
+            interactManager.PromptInteract(hit.transform.GetComponent<Interactable>());
+
+        }
+    }
+
+    private void checkInteracts() {
+
+        Vector3 realCenter = interactCollider.transform.position + interactCollider.center;
+        Vector3 halfVector = (interactCollider.height * 0.5f - interactCollider.radius) * (realCenter - transform.position).normalized;
+        Vector3 p1 = realCenter - halfVector;
+        Vector3 p2 = realCenter + halfVector;
+
+        interactHits = Physics.CapsuleCastAll(p1, p2, interactCollider.radius, p2 - p1, interactCollider.height, interactLayer);
+        //Debug.DrawRay(p1 - realCenter.normalized * interactCollider.radius, (p2 - p1), Color.green);
+
     }
 
     private void FixedUpdate()
     {
         MovePlayer();
+        checkInteracts();
+
+        
     }
 
     private void MyInput()

@@ -20,6 +20,13 @@ public class DialogueMessage : Dialogue
 }
 
 [System.Serializable]
+public class EndDialogueMessage : DialogueMessage
+{
+    [JsonProperty("next_conversation_id")]
+    public int next_conversation_id;
+}
+
+[System.Serializable]
 public class DialogueQuestion : Dialogue
 {   
     [JsonProperty("next_ids")]

@@ -16,7 +16,11 @@ public static class DialogueLoader
         {
             if (item is JObject json)
             {
-                if (json.ContainsKey("next_id"))
+                if (json.ContainsKey("next_conversation_id")) {
+                    EndDialogueMessage message = JsonConvert.DeserializeObject<EndDialogueMessage>(json.ToString());
+                    dialogueDict[message.id] = message;
+                }
+                else if (json.ContainsKey("next_id"))
                 {
                     DialogueMessage message = JsonConvert.DeserializeObject<DialogueMessage>(json.ToString());
                     dialogueDict[message.id] = message;
