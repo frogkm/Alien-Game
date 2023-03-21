@@ -16,6 +16,10 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] private float charWriteDelay;
     [SerializeField] private KeyCode continueKey;
 
+    [SerializeField] private GameObject responseBoxPrefab;
+    //[SerializeField] private Button responseButton;
+    //[SerializeField] private TMP_Text responseButtonText;
+
     [SerializeField] private InteractManager interactManager;
 
     private Dictionary<int, Dialogue> dialogueDict;

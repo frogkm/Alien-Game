@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05a451228bbaf5840b2d1f05d2909da9, type: 3}
+  m_Name: bobintro
+  m_EditorClassIdentifier: 
+  dialogueLines:
+  - speaker_id: '?'
+    message: This is a bad place. This is a bad place. This is a bad place. This
+      is a bad place. This is a bad place. This is a bad place. This is a bad place.
+      This is a bad place.
+  - speaker_id: You
+    message: What the fuck are you talking about?  I'm gonna fuck you if you don't
+      tell me what's going on.
+  - speaker_id: '?'
+    message: Go fuck yourself. Go fuck yourself. Go fuck yourself. Go fuck yourself.
+      Go fuck yourself. Go fuck yourself. Go fuck yourself. Go fuck yourself.
+  - speaker_id: You
+    message: The fuck is your problem? The fuck is your problem? The fuck is your
+      problem? The fuck is your problem? The fuck is your problem? The fuck is your
+      problem? The fuck is your problem?
+  - speaker_id: '?'
+    message: ' Suck my dick Suck my dick Suck my dick Suck my dick Suck my dick Suck
+      my dick Suck my dick Suck my dick Suck my dick'
+  dialogueResponses:
+  - response: Yes
+    responseDialogue: {fileID: 11400000, guid: ddbecadb51646484d81102693a488dd8, type: 2}
+  - response: Fuck no
+    responseDialogue: {fileID: 11400000, guid: bdd187c5dd32f7645957a962bfed6315, type: 2}
+  - response: Fuck no
+    responseDialogue: {fileID: 11400000, guid: bdd187c5dd32f7645957a962bfed6315, type: 2}
