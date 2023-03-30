@@ -1,37 +1,29 @@
-using Newtonsoft.Json;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 
-[System.Serializable]
-public class Dialogue
-{   
-    [JsonProperty("id")]
-    public int id;
-    [JsonProperty("speaker")]
-    public string speaker;
-    [JsonProperty("message")]
-    public string message;
-    
-}
-
-[System.Serializable]
-public class DialogueMessage : Dialogue
+[CreateAssetMenu(menuName ="Dialogue")]
+public class Dialogue : ScriptableObject
 {
-    [JsonProperty("next_id")]
-    public int next_id;
-}
+    [SerializeField] private List<DialogueLine> dialogueLines;
+    [SerializeField] private List<DialogueResponse> dialogueResponses;
+    [SerializeField] private MultiFlagSetter multiFlagSetter;
 
-[System.Serializable]
-public class EndDialogueMessage : DialogueMessage
-{
-    [JsonProperty("next_conversation_id")]
-    public int next_conversation_id;
-}
+    public List<DialogueLine> getDialogueLines() {
+        return dialogueLines;
+    }
 
-[System.Serializable]
-public class DialogueQuestion : Dialogue
-{   
-    [JsonProperty("next_ids")]
-    public int[] next_ids;
-    [JsonProperty("answers")]
-    public string[] answers;
-}
+    public List<DialogueResponse> getDialogueResponses() {
+        return dialogueResponses;
+    }
 
+    public void SetFlags() {
+        multiFlagSetter.SetFlags();
+    }
+
+    /*
+    public void InitFlags(FlagDictionary localFlagDictionary) {
+        multiFlagSetter.InitFlags(localFlagDictionary);
+    }
+    */
+}

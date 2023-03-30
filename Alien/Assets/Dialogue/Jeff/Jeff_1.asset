@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05a451228bbaf5840b2d1f05d2909da9, type: 3}
+  m_Name: Jeff_1
+  m_EditorClassIdentifier: 
+  dialogueLines:
+  - speaker: {fileID: 11400000, guid: 1f8aebbc656e70b4087774e84b8f3938, type: 2}
+    message: What is this place?
+  - speaker: {fileID: 11400000, guid: ca8e28a59f2c3864a9ba3d416abb5e4e, type: 2}
+    message: Man, you ask a lot of questions.  Look, my brother here is way better
+      than me at explaining this sort of thing.  Talk to him.
+  - speaker: {fileID: 11400000, guid: ca8e28a59f2c3864a9ba3d416abb5e4e, type: 2}
+    message: HEY BRO!  HE'S CLEARED.
+  dialogueResponses: []
+  multiFlagSetter:
+    boolFlagSetters:
+    - isLocal: 0
+      flagName: copper_cleared
+      val: 1
+    intFlagSetters: []
