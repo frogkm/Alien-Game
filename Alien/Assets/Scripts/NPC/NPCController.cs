@@ -5,9 +5,10 @@ using UnityEngine;
 public class NPCController : MonoBehaviour
 {
     [SerializeField] private NPC npc;
-    [SerializeField] private DialogueManager dialogueManager;
+    private DialogueManager dialogueManager;
 
     void Start() {
+        dialogueManager = GameObject.Find("GameManager").GetComponent<DialogueManager>();
         npc.InitFlags();
     }
 
