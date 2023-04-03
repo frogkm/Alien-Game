@@ -1749,6 +1749,7 @@ MonoBehaviour:
     m_Bits: 512
   gridWorldSize: {x: 25, y: 50}
   nodeRadius: 0.5
+  player: {fileID: 7386846228997444778}
 --- !u!4 &1606849033
 Transform:
   m_ObjectHideFlags: 0

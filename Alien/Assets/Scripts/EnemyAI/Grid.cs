@@ -18,6 +18,7 @@ public class Grid : MonoBehaviour
     [SerializeField] LayerMask unwalkableMask;
     [SerializeField] private Vector2 gridWorldSize;
     [SerializeField] private float nodeRadius;
+    //[SerializeField] private Transform player;
 
     private PathNode[,] grid;
     private float nodeDiameter;
@@ -40,13 +41,31 @@ public class Grid : MonoBehaviour
         }
     }
 
+    public PathNode NodeFromWorldPoint(Vector3 worldPosition) {
+        worldPosition -= transform.position;
+        float percentX = (worldPosition.x + gridWorldSize.x / 2) / gridWorldSize.x;
+        float percentY = (worldPosition.z + gridWorldSize.y / 2) / gridWorldSize.y;
+
+        percentX = Mathf.Clamp01(percentX);
+        percentY = Mathf.Clamp01(percentY);
+
+        int x = Mathf.RoundToInt((numNodesX - 1) * percentX);
+        int y = Mathf.RoundToInt((numNodesY - 1) * percentY);
+
+        return grid[x,y];
+    }
+
     void OnDrawGizmos() {
         Gizmos.DrawWireCube(transform.position, new Vector3(gridWorldSize.x, 1, gridWorldSize.y));
 
 
         if (grid != null) {
+            //PathNode playerNode = NodeFromWorldPoint(player.position);
             foreach(PathNode node in grid) {
                 Gizmos.color = (node.walkable)?Color.green:Color.red;
+                //if (playerNode == node) {
+                //    Gizmos.color = Color.cyan;
+                //}
                 Gizmos.DrawSphere(node.position, nodeRadius-0.1f);
             }
         }
