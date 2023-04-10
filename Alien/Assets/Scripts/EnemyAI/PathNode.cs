@@ -14,9 +14,4 @@ public class PathNode {
         this.x = x;
         this.y = y;
     }
-
-
-
-   
-
 }

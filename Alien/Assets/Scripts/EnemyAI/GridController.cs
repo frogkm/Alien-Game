@@ -7,7 +7,7 @@ public class GridController : MonoBehaviour
 {
     [SerializeField] LayerMask unwalkableMask;
     [SerializeField] private Vector2 gridWorldSize;
-    [SerializeField] private float nodeRadius;
+    [SerializeField] public float nodeRadius;
     [SerializeField] private Transform player;
 
     public PathNode[,] grid;
@@ -15,12 +15,18 @@ public class GridController : MonoBehaviour
     private int numNodesX, numNodesY;
     private Vector3 bottomLeft;
 
-    void Start() {
+    void Awake() {
+
         nodeDiameter = nodeRadius * 2;
         numNodesX = (int) (gridWorldSize.x / nodeDiameter);
         numNodesY = (int) (gridWorldSize.y / nodeDiameter);
 
-        grid = new PathNode[numNodesX, numNodesY]();
+        grid = new PathNode[numNodesX, numNodesY];
+
+    }
+
+    void Start() {
+        
         bottomLeft = transform.position - Vector3.right * gridWorldSize.x / 2 - Vector3.forward * gridWorldSize.y / 2;
 
         for (int i = 0; i < numNodesX; i++) {
@@ -59,14 +65,14 @@ public class GridController : MonoBehaviour
         Gizmos.DrawWireCube(transform.position, new Vector3(gridWorldSize.x, 1, gridWorldSize.y));
 
         if (grid != null) {
-            PathNode playerNode = NodeFromWorldPoint(player.position);
+            //PathNode playerNode = NodeFromWorldPoint(player.position);
             //int[] gridPos = NodeToGridPos(playerNode);
             //Debug.Log(GetNodePosition(gridPos[0], gridPos[1]));
             foreach(PathNode node in grid) {
                 Gizmos.color = (node.walkable)?Color.green:Color.red;
-                if (playerNode == node) {
-                    Gizmos.color = Color.cyan;
-                }
+                //if (playerNode == node) {
+                //    Gizmos.color = Color.cyan;
+                //}
                 Gizmos.DrawCube(GetNodePosition(node), new Vector3(nodeDiameter - 0.1f, nodeDiameter - 0.1f, nodeDiameter - 0.1f));
                 
             }
