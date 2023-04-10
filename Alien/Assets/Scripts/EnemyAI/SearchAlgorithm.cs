@@ -4,6 +4,6 @@ using UnityEngine;
 
 public abstract class SearchAlgorithm
 {
-    public abstract PathNode[] GetPath(PathNode[,] grid, int startX, int startY, int targetX, int targetY);
+    public abstract PathNode[] GetPath(PathNode start, PathNode target);
   
 }

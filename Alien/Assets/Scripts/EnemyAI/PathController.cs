@@ -4,14 +4,12 @@ using UnityEngine;
 
 public class PathController : MonoBehaviour
 {
-    [SerializeField] private SearchAlgorithm searchAlg;
+    private SearchAlgorithm searchAlg;
     [SerializeField] private GridController gridController;
-
-    private Grid gridWrapper;
 
 
     void Awake() {
-        gridWrapper = gridController.GetGrid();
+        searchAlg = new AStarSearch(gridController.grid);
     }
 
     public PathNode[] GetPath(Vector3 target) {
